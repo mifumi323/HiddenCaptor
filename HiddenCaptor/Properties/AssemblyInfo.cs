@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("HiddenCaptor")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("MouseComputer PC")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("HiddenCaptor")]
-[assembly: AssemblyCopyright("Copyright © MouseComputer PC 2015")]
+[assembly: AssemblyCopyright("Copyright © Mifumi Matsuda 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
