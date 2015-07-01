@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HiddenCaptor.Properties;
 
 namespace HiddenCaptor
 {
@@ -63,14 +64,39 @@ namespace HiddenCaptor
 
         private void FormConfig_Load(object sender, EventArgs e)
         {
+            LoadSettings();
             notifyIcon1.Icon = Icon;
             notifyIcon1.Text = Text;
             notifyIcon1.Visible = true;
         }
 
+        private void LoadSettings()
+        {
+            var setting = Settings.Default;
+            if (setting.UpgradeRequired)
+            {
+                setting.Upgrade();
+                setting.UpgradeRequired = false;
+                setting.Save();
+            }
+            txtSaveFolder.Text = setting.SaveFolder;
+            chkSourceClipboard.Checked = setting.SourceClipboard;
+            chkSaveAlways.Checked = setting.SaveAlways;
+        }
+
         private void FormConfig_FormClosed(object sender, FormClosedEventArgs e)
         {
             notifyIcon1.Visible = false;
+            SaveSettings();
+        }
+
+        private void SaveSettings()
+        {
+            var setting = Settings.Default;
+            setting.SaveFolder = txtSaveFolder.Text;
+            setting.SourceClipboard = chkSourceClipboard.Checked;
+            setting.SaveAlways = chkSaveAlways.Checked;
+            setting.Save();
         }
 
         private void FormConfig_FormClosing(object sender, FormClosingEventArgs e)
